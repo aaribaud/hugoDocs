@@ -63,7 +63,19 @@ hugo --config a.toml,b.yaml,c.json
 
 ## Configuration directory
 
-Instead of a single site configuration file, split your configuration by [environment](g), root configuration key, and language. For example:
+Instead of a single site configuration file, split your configuration by [environment](g), root configuration key, and language.
+
+This works as follows:
+
+- the environment determines the name of the directory under `config/` which will be read.
+- top-level configuration can be specified in file `hugo.toml` under the environment directory.
+- configuration under a root key can be specified in a file starting with this key, e.g. "menus.toml`.
+- language-specific configuration files have the 2-letter language before the `.toml` suffix, e.g. `menus.en.toml`.
+
+For example, the following describes a default environment with top-level configuration file `hugo.toml`, one
+*params* key configuration file `params.toml`, and two *menus* key configuration files, one for English
+(`menus.en.toml`) and one for German (`menus.de.toml`), plus a production configuration file for *params* (which
+will add up to the default one above it):
 
 ```text
 my-project/
